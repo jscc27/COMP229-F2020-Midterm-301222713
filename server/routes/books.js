@@ -35,7 +35,7 @@ router.get('/add', (req, res, next) => {
         "Price": 0,
         "Author": "",
         "Genre": ""
-    }});
+    }}); // null object passed as book
 
 });
 
@@ -102,14 +102,14 @@ router.post('/edit/:id', (req, res, next) => {
       "Genre": req.body.genre
   });
 
-  book.updateOne(updatedBook, (err, book) => {
-      if(err){
-          console.log(err);
-          res.end(err);
-      }
-      else{
-          res.redirect('/books');
-      }
+  book.updateOne({_id: id}, updatedBook, (err) => {
+    if(err){
+        console.log(err);
+        res.end(err);
+    }
+    else{
+        res.redirect('/books');
+    }
   });
 
 
