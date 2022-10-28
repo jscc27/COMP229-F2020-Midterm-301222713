@@ -29,7 +29,13 @@ router.get('/add', (req, res, next) => {
     /*****************
      * ADD CODE HERE *
      *****************/
-     res.render('books/details', {title: 'Add Book'});
+     res.render('books/details', {title: 'Add Book', book: {
+        "Title": "",
+        "Description": "",
+        "Price": 0,
+        "Author": "",
+        "Genre": ""
+    }});
 
 });
 
@@ -74,7 +80,7 @@ router.get('/edit/:id', (req, res, next) => {
              res.end(err);
          }
          else{
-             res.render('books/edit', {title: 'Edit Book', book: bookToEdit});
+             res.render('books/details', {title: 'Edit Book', book: bookToEdit});
          }
      });
 });
